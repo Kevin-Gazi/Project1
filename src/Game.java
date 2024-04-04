@@ -15,6 +15,5 @@ public class Game {
 
 
     public void voegGameToe() {
-
     }
 }

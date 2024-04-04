@@ -5,7 +5,7 @@ public class MenuKeuze {
     public void displayMainMenu() {
         System.out.println("=== Retro Game Store ===");
         System.out.println("1. Toon alle games");
-        System.out.println("4. Voeg een review toe voor een game");
+        System.out.println("2. Voeg een review toe voor een game");
         System.out.println("3. Toon reviews op basis van genre");
         System.out.println("4. Voeg nieuwe game toe");
         System.out.println("5. Speel game");
