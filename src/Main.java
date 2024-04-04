@@ -8,7 +8,7 @@ public class Main {
         List<String> vragen = reader.readAllLines();
 
         AnswerWriter writer = new AnswerWriter("<Locatie uit te lezen bestand>");
-        writer.writeAllLines(List.of("42", "Extra test"));
+        writer.writeAllLines(List.of("42", "Extra test")); // test
 
         for (String vraag : vragen) {
             System.out.println(vraag);
