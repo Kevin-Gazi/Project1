@@ -15,7 +15,6 @@ public class MenuKeuze {
         System.out.println("4. Voeg een review toe voor een game");
         System.out.println();
         System.out.println("5. Afsluiten");
-        System.out.println();
     }
 
 
