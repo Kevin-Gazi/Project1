@@ -4,26 +4,28 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) {
-        String fileName = "file.txt"; // Name of the text file
+        String fileName = "mydata.csv"; // Naam van het CSV-bestand
 
         try {
-            // Open the file in append mode
-            FileWriter fileWriter = new FileWriter(fileName, true);
+            // Open het bestand in schrijfmodus (creëert een nieuw bestand of overschrijft het bestaande)
+            FileWriter fileWriter = new FileWriter(fileName);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-            // Write data to the file
-            bufferedWriter.write("Hello, World!");
-            bufferedWriter.newLine(); // Add a new line
+            // Schrijf koptekst
+            bufferedWriter.write("Name, Age, City");
+            bufferedWriter.newLine(); // Voeg een nieuwe regel toe
 
-            // Write more data
-            bufferedWriter.write("This is a sample text.");
+            // Schrijf gegevens
+            bufferedWriter.write("John Doe, 30, New York");
+            bufferedWriter.newLine(); // Voeg een nieuwe regel toe
+            bufferedWriter.write("Jane Smith, 25, Los Angeles");
 
-            // Close the file
+            // Sluit het bestand
             bufferedWriter.close();
 
-            System.out.println("Data written to the file successfully.");
+            System.out.println("Gegevens succesvol naar het CSV-bestand geschreven.");
         } catch (IOException e) {
-            System.out.println("An error occurred while writing to the file: " + e.getMessage());
+            System.out.println("Er is een fout opgetreden tijdens het schrijven naar het bestand: " + e.getMessage());
         }
     }
 }
