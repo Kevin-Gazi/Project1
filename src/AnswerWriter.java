@@ -11,7 +11,7 @@ public class AnswerWriter {
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
             // Schrijf koptekst
-            bufferedWriter.write("Name, Age, City");
+            bufferedWriter.write("Game, Age, City");
             bufferedWriter.newLine(); // Voeg een nieuwe regel toe
 
             // Schrijf gegevens
