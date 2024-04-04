@@ -1,15 +1,21 @@
 import java.util.Scanner;
 
 public class MenuKeuze {
-    // Methode om het menu weer te geven
+    private Catalogus catalogus;
+
+    public MenuKeuze() {
+        this.catalogus = new Catalogus();
+    }
+
     public void displayMainMenu() {
         System.out.println("=== Retro Game Store ===");
         System.out.println("1. Toon alle games");
-        System.out.println("2. Voeg een review toe voor een game");
+        System.out.println("2. Voeg nieuwe game toe");
         System.out.println("3. Toon reviews op basis van genre");
-        System.out.println("4. Voeg nieuwe game toe");
-        System.out.println("5. Speel game");
-        System.out.println("6. Afsluiten");
+        System.out.println("4. Voeg een review toe voor een game");
+        System.out.println();
+        System.out.println("5. Afsluiten");
+        System.out.println();
     }
 
 
@@ -24,15 +30,10 @@ public class MenuKeuze {
 
             switch (choice) {
                 case 1:
+                    catalogus.toonCatalogus();
                     break;
                 case 2:
-                    System.out.print("Voer de titel van de nieuwe game in: ");
-                    String title = scanner.nextLine();
-                    System.out.print("Voer het genre van de nieuwe game in: ");
-                    String genre = scanner.nextLine();
-                    System.out.print("Voer de prijs van de nieuwe game in: ");
-                    double price = scanner.nextDouble();
-                    System.out.println("Nieuwe game toegevoegd!");
+                    voegGameToe(scanner);
                     break;
                 case 3:
                     System.out.print("Voer het genre in om de reviews te tonen: ");
@@ -47,5 +48,17 @@ public class MenuKeuze {
                     break;
             }
         } while (choice != 5);
+    }
+
+    public void voegGameToe(Scanner scanner) {
+        System.out.print("Voer de titel van de nieuwe game in: ");
+        String titel = scanner.nextLine();
+        System.out.print("Voer het genre van de nieuwe game in: ");
+        String genre = scanner.nextLine();
+        System.out.print("Voer de prijs van de nieuwe game in: ");
+        double prijs = scanner.nextDouble();
+        Game nieuweGame = new Game(titel, genre, prijs);
+        catalogus.voegGameToe(nieuweGame);
+        System.out.println("Nieuwe game toegevoegd aan de catalogus!");
     }
 }
