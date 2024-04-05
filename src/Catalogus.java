@@ -75,6 +75,7 @@ public class Catalogus {
                 String toelichting = sc.nextLine();
 
                 Review review = new Review(cijferGameplay, cijferGraphics, cijferStoryline, toelichting);
+                spel.voegReviewToe(review);
             }
         }
 
