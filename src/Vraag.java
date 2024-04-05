@@ -17,4 +17,6 @@ public class Vraag {
     public void voegVraagToe(String vervolgVraag) {
         this.vervolgVraag.add(vervolgVraag);
     }
+
+
 }
