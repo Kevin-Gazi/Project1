@@ -26,6 +26,10 @@ public class Game {
         return gamePrijs;
     }
 
+    public ArrayList<Review> getReviewLijst() {
+        return reviewLijst;
+    }
+
     public static void voegGameToe(Scanner scanner, Catalogus catalogus) {
         System.out.print("Voer de titel van de nieuwe game in: ");
         String titel = scanner.nextLine();
@@ -46,5 +50,9 @@ public class Game {
         Game nieuweGame = new Game(titel, genre, prijs);
         catalogus.voegGameToe(nieuweGame);
         System.out.println("Nieuwe game toegevoegd aan de catalogus!");
+    }
+
+    public void voegReviewToe(Review review){
+        reviewLijst.add(review);
     }
 }

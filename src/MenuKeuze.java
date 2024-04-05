@@ -13,8 +13,9 @@ public class MenuKeuze {
         System.out.println("2. Voeg nieuwe game toe");
         System.out.println("3. Toon games op basis van genre");
         System.out.println("4. Voeg een review toe voor een game");
+        System.out.println("4. Toon reviews");
         System.out.println();
-        System.out.println("5. Afsluiten");
+        System.out.println("6. Afsluiten");
     }
 
 
@@ -42,6 +43,9 @@ public class MenuKeuze {
                     catalogus.voegReviewToe();
                     break;
                 case 5:
+                    catalogus.toonReviews();
+                    break;
+                case 6:
                     System.out.println("Bedankt voor uw bezoek aan de Retro Game Store!");
                     break;
                 default:

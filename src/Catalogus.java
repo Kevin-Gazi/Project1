@@ -41,13 +41,15 @@ public class Catalogus {
         System.out.println("Welke game wil je reviewen?");
         String reviewKeuze = sc.nextLine();
 
-        for (Game spellen : games) {
-            if (spellen.getGameNaam().equalsIgnoreCase(reviewKeuze)) {
+        boolean gameGevonden = false;
+
+        for (Game spel : games) {
+            if (spel.getGameNaam().equalsIgnoreCase(reviewKeuze)) {
+                gameGevonden = true;
                 System.out.println("Voor de volgende categorieën kan je een geheel cijfer van 1 tot 5 geven.");
+
                 System.out.println("Welk cijfer geef je dit spel voor de categorie gameplay?");
-
                 int cijferGameplay = sc.nextInt();
-
                 while (cijferGameplay < 1 || cijferGameplay > 5) {
                     System.out.println("Ongeldige score. Het cijfer moet tussen 1 en 5 liggen, voer een nieuw cijfer in.");
                     cijferGameplay = sc.nextInt();
@@ -55,7 +57,6 @@ public class Catalogus {
 
                 System.out.println("Welk cijfer geef je dit spel voor de categorie storyline?");
                 int cijferStoryline = sc.nextInt();
-
                 while (cijferStoryline < 1 || cijferStoryline > 5) {
                     System.out.println("Ongeldige score. Het cijfer moet tussen 1 en 5 liggen, voer een nieuw cijfer in.");
                     cijferStoryline = sc.nextInt();
@@ -63,21 +64,49 @@ public class Catalogus {
 
                 System.out.println("Welk cijfer geef je dit spel voor de categorie graphics?");
                 int cijferGraphics = sc.nextInt();
-
                 while (cijferGraphics < 1 || cijferGraphics > 5) {
                     System.out.println("Ongeldige score. Het cijfer moet tussen 1 en 5 liggen, voer een nieuw cijfer in.");
                     cijferGraphics = sc.nextInt();
                 }
 
+                sc.nextLine();
+
                 System.out.println("Geef een toelichting van je cijfers:");
                 String toelichting = sc.nextLine();
 
-            } else {
-                System.out.println("Deze game staat niet in de catalogus.");
-                break;
+                Review review = new Review(cijferGameplay, cijferGraphics, cijferStoryline, toelichting);
             }
+        }
 
+        if (!gameGevonden) {
+            System.out.println("Deze game staat niet in de catalogus.");
+        }
+    }
 
+    public void toonReviews() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Welke game wil je de reviews van zien?");
+        String gameKeuze = sc.nextLine();
+
+        boolean gameGevonden = false;
+
+        for (Game game : games) {
+            if (game.getGameNaam().equalsIgnoreCase(gameKeuze)) {
+                gameGevonden = true;
+                System.out.println("Reviews voor " + gameKeuze + ":");
+
+                for (Review review : game.getReviewLijst()) {
+                    System.out.println("Gameplay Score: " + review.getGameplayScore());
+                    System.out.println("Graphics Score: " + review.getGraphicsScore());
+                    System.out.println("Story Score: " + review.getStoryScore());
+                    System.out.println("Toelichting: " + review.getToelichting());
+                    System.out.println();
+                }
+            }
+        }
+
+        if (!gameGevonden) {
+            System.out.println("Deze game staat niet in de catalogus.");
         }
     }
 }
