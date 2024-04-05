@@ -15,7 +15,7 @@ public class MenuKeuze {
         System.out.println("4. Voeg een review toe voor een game");
         System.out.println("5. Toon reviews");
         System.out.println();
-        System.out.println("6. Afsluiten");
+        System.out.println("9. Afsluiten");
     }
 
 
@@ -45,13 +45,13 @@ public class MenuKeuze {
                 case 5:
                     catalogus.toonReviews();
                     break;
-                case 6:
+                case 9:
                     System.out.println("Bedankt voor uw bezoek aan de Retro Game Store!");
                     break;
                 default:
                     System.out.println("Ongeldige keuze. Probeer opnieuw.");
                     break;
             }
-        } while (choice != 5);
+        } while (choice != 9);
     }
 }

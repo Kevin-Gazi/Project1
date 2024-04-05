@@ -96,12 +96,22 @@ public class Catalogus {
                 gameGevonden = true;
                 System.out.println("Reviews voor " + gameKeuze + ":");
 
+                double totaleScore = 0;
+                int aantalReviews = game.getReviewLijst().size();
+
                 for (Review review : game.getReviewLijst()) {
                     System.out.println("Gameplay Score: " + review.getGameplayScore());
                     System.out.println("Graphics Score: " + review.getGraphicsScore());
                     System.out.println("Story Score: " + review.getStoryScore());
                     System.out.println("Toelichting: " + review.getToelichting());
                     System.out.println();
+
+                    totaleScore += review.getGameplayScore() + review.getGraphicsScore() + review.getStoryScore();
+                }
+
+                if (aantalReviews != 0) {
+                    double gemiddeldeScore = totaleScore / 3.0; // Correctie hier
+                    System.out.println("Gemiddelde score: " + gemiddeldeScore);
                 }
             }
         }
@@ -110,4 +120,5 @@ public class Catalogus {
             System.out.println("Deze game staat niet in de catalogus.");
         }
     }
+
 }

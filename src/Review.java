@@ -30,9 +30,4 @@ public class Review {
     public String getToelichting() {
         return toelichting;
     }
-
-    public double berekenGemiddelde(){
-        double gemiddelde = (gameplayScore + graphicsScore + storyScore) / 3;
-        return gemiddelde;
-    }
 }
