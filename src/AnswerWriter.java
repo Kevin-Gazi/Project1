@@ -3,7 +3,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class AnswerWriter {
-    // Methode om gegevens naar een CSV-bestand te schrijven
     public static void writeToCSV(String fileName) {
         try {
             // Open het bestand in schrijfmodus (creëert een nieuw bestand of overschrijft het bestaande)
@@ -11,7 +10,7 @@ public class AnswerWriter {
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
             // Schrijf koptekst
-            bufferedWriter.write("Game, Age, City");
+            bufferedWriter.write("Vraag, Antwoord, City");
             bufferedWriter.newLine(); // Voeg een nieuwe regel toe
 
             // Schrijf gegevens

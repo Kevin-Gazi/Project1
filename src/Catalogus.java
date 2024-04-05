@@ -1,6 +1,8 @@
 import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Catalogus {
-    private ArrayList<Game> games;
+    public ArrayList<Game> games;
 
     public Catalogus() {
         this.games = new ArrayList<>();
@@ -11,9 +13,9 @@ public class Catalogus {
     }
 
     public void toonCatalogus() {
-            System.out.println("Games in de catalogus:");
-            for (Game game : games) {
-                System.out.println("Titel: " + game.getGameNaam() + ", Genre: " + game.getGameGenre() + ", Prijs: " + game.getGamePrijs());
+        System.out.println("Games in de catalogus:");
+        for (Game game : games) {
+            System.out.println("Titel: " + game.getGameNaam() + ", Genre: " + game.getGameGenre() + ", Prijs: " + game.getGamePrijs());
         }
     }
 
@@ -32,5 +34,50 @@ public class Catalogus {
 
         Game game5 = new Game("Space Invaders", "Shooter", 9.99);
         voegGameToe(game5);
+    }
+
+    public void voegReviewToe() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Welke game wil je reviewen?");
+        String reviewKeuze = sc.nextLine();
+
+        for (Game spellen : games) {
+            if (spellen.getGameNaam().equalsIgnoreCase(reviewKeuze)) {
+                System.out.println("Voor de volgende categorieën kan je een geheel cijfer van 1 tot 5 geven.");
+                System.out.println("Welk cijfer geef je dit spel voor de categorie gameplay?");
+
+                int cijferGameplay = sc.nextInt();
+
+                while (cijferGameplay < 1 || cijferGameplay > 5) {
+                    System.out.println("Ongeldige score. Het cijfer moet tussen 1 en 5 liggen, voer een nieuw cijfer in.");
+                    cijferGameplay = sc.nextInt();
+                }
+
+                System.out.println("Welk cijfer geef je dit spel voor de categorie storyline?");
+                int cijferStoryline = sc.nextInt();
+
+                while (cijferStoryline < 1 || cijferStoryline > 5) {
+                    System.out.println("Ongeldige score. Het cijfer moet tussen 1 en 5 liggen, voer een nieuw cijfer in.");
+                    cijferStoryline = sc.nextInt();
+                }
+
+                System.out.println("Welk cijfer geef je dit spel voor de categorie graphics?");
+                int cijferGraphics = sc.nextInt();
+
+                while (cijferGraphics < 1 || cijferGraphics > 5) {
+                    System.out.println("Ongeldige score. Het cijfer moet tussen 1 en 5 liggen, voer een nieuw cijfer in.");
+                    cijferGraphics = sc.nextInt();
+                }
+
+                System.out.println("Geef een toelichting van je cijfers:");
+                String toelichting = sc.nextLine();
+
+            } else {
+                System.out.println("Deze game staat niet in de catalogus.");
+                break;
+            }
+
+
+        }
     }
 }

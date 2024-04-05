@@ -39,6 +39,7 @@ public class MenuKeuze {
                     System.out.print("Voer het genre in om de reviews te tonen: ");
                     break;
                 case 4:
+                    catalogus.voegReviewToe();
                     break;
                 case 5:
                     System.out.println("Bedankt voor uw bezoek aan de Retro Game Store!");

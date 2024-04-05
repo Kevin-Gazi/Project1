@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
-    String gameNaam;
-    String gameGenre;
-    double gamePrijs;
-    ArrayList<Review> reviewLijst;
+    private String gameNaam;
+    private String gameGenre;
+    private double gamePrijs;
+    ArrayList <Review> reviewLijst;
 
     public Game (String gameNaam, String gameGenre, double gamePrijs) {
         this.gameNaam = gameNaam;
