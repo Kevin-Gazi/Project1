@@ -21,6 +21,7 @@ public class MenuKeuze {
     public void start() {
         int choice;
         Scanner scanner = new Scanner(System.in);
+        catalogus.maakRetroGames();
         do {
             displayMainMenu();
             System.out.print("Voer uw keuze in: ");
