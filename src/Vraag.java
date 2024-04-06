@@ -27,7 +27,6 @@ public class Vraag {
     List<String> antwoorden = new ArrayList<>();
 
 
-
     public void VragenBeantwoorden() {
 
         for (String vraag : openVragen) {
