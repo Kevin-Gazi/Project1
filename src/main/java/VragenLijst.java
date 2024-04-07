@@ -19,9 +19,6 @@ public class VragenLijst {
         vragen.add(new MeerkeuzeVragen("5.\tWelke soorten games zou je graag vaker willen zien in de catalogus van Good ol’ games?", new String[]{"Avontuur", "Strategie", "Role-Playing", "Simulatie"}));
     }
 
-    public void voegVraagToe(Vraag vraag) {
-        vragen.add(vraag);
-    }
 
     public void vragenLijst() {
         Scanner scanner = new Scanner(System.in);

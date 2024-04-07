@@ -26,6 +26,10 @@ public class Game {
         return gamePrijs;
     }
 
+    public void setGamePrijs(double gamePrijs) {
+        this.gamePrijs = gamePrijs;
+    }
+
     public ArrayList<Review> getReviewLijst() {
         return reviewLijst;
     }
@@ -56,10 +60,4 @@ public class Game {
         reviewLijst.add(review);
     }
 
-    public void KortingGame (double kortingPercentage) {
-        double oudePrijs = this.gamePrijs;
-        double kortingBedrag = oudePrijs * (kortingPercentage / 100);
-        this.gamePrijs -= kortingBedrag;
-
-    }
 }

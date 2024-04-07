@@ -23,6 +23,7 @@ public class MenuKeuze {
         int choice;
         Scanner scanner = new Scanner(System.in);
         catalogus.maakRetroGames();
+
         do {
             displayMainMenu();
             System.out.print("Voer uw keuze in: ");
@@ -37,7 +38,7 @@ public class MenuKeuze {
                     Game.voegGameToe(scanner, catalogus);
                     break;
                 case 3:
-                    System.out.print("Voer het genre in om de reviews te tonen: ");
+                    catalogus.toonGamesOpGenre();
                     break;
                 case 4:
                     catalogus.voegReviewToe();

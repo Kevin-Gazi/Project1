@@ -15,29 +15,41 @@ public class Catalogus {
     public void toonCatalogus() {
         System.out.println("Games in de catalogus:");
         for (Game game : games) {
-            System.out.println("Titel: " + game.getGameNaam() + ", Genre: " + game.getGameGenre() + ", Prijs: " + game.getGamePrijs());
+            double gemiddeldeScore = berekenGemiddeldeScore(game);
+            double oudePrijs = game.getGamePrijs();
+            String prijsNaKorting;
+
+            if (gemiddeldeScore == 0 || gemiddeldeScore == 3) {
+                prijsNaKorting = "nvt";
+            } else {
+                if (gemiddeldeScore > 4) {
+                    game.setGamePrijs(game.getGamePrijs() * 1.10);
+                } else if (gemiddeldeScore < 3) {
+                    game.setGamePrijs(game.getGamePrijs() * 0.90);
+                }
+                prijsNaKorting = String.format("%.2f", game.getGamePrijs());
+            }
+
+            System.out.printf("Titel: %s, Genre: %s, Prijs: %.2f, Prijs na Korting: %s, Gemiddelde score: %.1f\n",
+                    game.getGameNaam(), game.getGameGenre(), oudePrijs, prijsNaKorting, gemiddeldeScore);
         }
     }
 
+
     public void maakRetroGames() {
         Game game1 = new Game("Pac-Man", "Arcade", 9.99);
-        game1.KortingGame(50);
         voegGameToe(game1);
 
         Game game2 = new Game("Super Mario Bros", "Adventure", 19.99);
-        game2.KortingGame(50);
         voegGameToe(game2);
 
         Game game3 = new Game("The Legend of Zelda", "Adventure", 29.99);
-        game3.KortingGame(25);
         voegGameToe(game3);
 
         Game game4 = new Game("Tetris", "Puzzle", 14.99);
-        game4.KortingGame(10);
         voegGameToe(game4);
 
         Game game5 = new Game("Space Invaders", "Shooter", 9.99);
-        game5.KortingGame(10);
         voegGameToe(game5);
     }
 
@@ -110,22 +122,19 @@ public class Catalogus {
                 gameGevonden = true;
                 System.out.println("Reviews voor " + gameKeuze + ":");
 
-                double totaleScore = 0;
-                int aantalReviews = game.getReviewLijst().size();
-
+                int reviewNummer = 1;
                 for (Review review : game.getReviewLijst()) {
+                    System.out.println("Review " + reviewNummer + ":");
                     System.out.println("Gameplay Score: " + review.getGameplayScore());
                     System.out.println("Graphics Score: " + review.getGraphicsScore());
                     System.out.println("Story Score: " + review.getStoryScore());
                     System.out.println("Toelichting: " + review.getToelichting());
                     System.out.println();
-
-                    totaleScore += review.getGameplayScore() + review.getGraphicsScore() + review.getStoryScore();
+                    reviewNummer++;
                 }
 
-                if (aantalReviews != 0) {
-                    double gemiddeldeScore = totaleScore / 3.0; // Correctie hier
-                    System.out.println("Gemiddelde score: " + gemiddeldeScore);
+                if (game.getReviewLijst().isEmpty()) {
+                    System.out.println("Er zijn geen reviews voor dit spel.");
                 }
             }
         }
@@ -135,4 +144,38 @@ public class Catalogus {
         }
     }
 
+    public void toonGamesOpGenre() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Voer het genre in om games te tonen:");
+        String genre = scanner.nextLine();
+
+        boolean gamesGevonden = false;
+
+        System.out.println("Games in het genre " + genre + ":");
+        for (Game game : games) {
+            if (game.getGameGenre().equalsIgnoreCase(genre)) {
+                System.out.println("Titel: " + game.getGameNaam() + ", Prijs: " + game.getGamePrijs());
+                gamesGevonden = true;
+            }
+        }
+
+        if (!gamesGevonden) {
+            System.out.println("Er zijn geen games gevonden in het genre " + genre + ".");
+        }
+    }
+
+    public double berekenGemiddeldeScore(Game game) {
+        double totaleScore = 0;
+        int aantalReviews = game.getReviewLijst().size();
+
+        if (aantalReviews == 0) {
+            return 0;
+        }
+
+        for (Review review : game.getReviewLijst()) {
+            totaleScore += review.getGameplayScore() + review.getGraphicsScore() + review.getStoryScore();
+        }
+
+        return totaleScore / (3.0 * aantalReviews);
+    }
 }
