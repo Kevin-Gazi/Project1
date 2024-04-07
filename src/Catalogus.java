@@ -76,6 +76,15 @@ public class Catalogus {
 
                 Review review = new Review(cijferGameplay, cijferGraphics, cijferStoryline, toelichting);
                 spel.voegReviewToe(review);
+
+                System.out.println("Bedankt voor het geven van een review op de game:" +spel.getGameNaam());
+                System.out.print("Heeft u tijd om een vragenlijst in te vullen? (Ja/Nee)");
+
+                sc.nextLine();
+                if (sc.nextLine().equals("Ja")) {
+                    VragenLijst vragenlijst = new VragenLijst();
+                    vragenlijst.vragenLijst();
+                }
             }
         }
 
