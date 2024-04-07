@@ -55,4 +55,11 @@ public class Game {
     public void voegReviewToe(Review review){
         reviewLijst.add(review);
     }
+
+    public void KortingGame (double kortingPercentage) {
+        double oudePrijs = this.gamePrijs;
+        double kortingBedrag = oudePrijs * (kortingPercentage / 100);
+        this.gamePrijs -= kortingBedrag;
+
+    }
 }

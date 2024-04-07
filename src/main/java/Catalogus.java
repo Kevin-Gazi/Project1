@@ -21,18 +21,23 @@ public class Catalogus {
 
     public void maakRetroGames() {
         Game game1 = new Game("Pac-Man", "Arcade", 9.99);
+        game1.KortingGame(50);
         voegGameToe(game1);
 
         Game game2 = new Game("Super Mario Bros", "Adventure", 19.99);
+        game2.KortingGame(50);
         voegGameToe(game2);
 
         Game game3 = new Game("The Legend of Zelda", "Adventure", 29.99);
+        game3.KortingGame(25);
         voegGameToe(game3);
 
         Game game4 = new Game("Tetris", "Puzzle", 14.99);
+        game4.KortingGame(10);
         voegGameToe(game4);
 
         Game game5 = new Game("Space Invaders", "Shooter", 9.99);
+        game5.KortingGame(10);
         voegGameToe(game5);
     }
 
