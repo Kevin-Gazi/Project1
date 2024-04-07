@@ -78,10 +78,10 @@ public class Catalogus {
                 spel.voegReviewToe(review);
 
                 System.out.println("Bedankt voor het geven van een review op de game:" +spel.getGameNaam());
-                System.out.print("Heeft u tijd om een vragenlijst in te vullen? (Ja/Nee)");
+                System.out.println("Heeft u tijd om een vragenlijst in te vullen? (Ja/Nee)");
 
-                sc.nextLine();
-                if (sc.nextLine().equals("Ja")) {
+                String antwoord =sc.nextLine();
+                if (antwoord.equalsIgnoreCase("Ja")) {
                     VragenLijst vragenlijst = new VragenLijst();
                     vragenlijst.vragenLijst();
                 }
