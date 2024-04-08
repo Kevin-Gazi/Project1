@@ -229,11 +229,9 @@ public class Catalogus {
             FileWriter fileWriter = new FileWriter(csvBestand);
             CSVWriter csvWriter = new CSVWriter(fileWriter);
 
-
             String[] header = {"Game Naam", "Game Genre", "Game Prijs", "Gameplay Score", "Graphics Score", "Story Score", "Toelichting"};
             csvWriter.writeNext(header);
 
-            
             for (Game game : games) {
                 String gameNaam = game.getGameNaam();
                 String gameGenre = game.getGameGenre();
@@ -252,11 +250,10 @@ public class Catalogus {
             }
 
             csvWriter.close();
-            System.out.println("Je review voor de game: " + );
+
         } catch (IOException e) {
-            System.err.println("Je review voor de game: " + games.get());
+            System.out.println("Er is een fout opgetreden bij het schrijven naar het CSV-bestand: " + e.getMessage());
         }
     }
-
 
 }
