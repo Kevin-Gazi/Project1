@@ -252,9 +252,9 @@ public class Catalogus {
             }
 
             csvWriter.close();
-            System.out.println("De reviews zijn succesvol geschreven naar " + csvBestand);
+            System.out.println("Je review voor de game: " + );
         } catch (IOException e) {
-            System.err.println("Fout bij het schrijven naar het CSV-bestand: " + e.getMessage());
+            System.err.println("Je review voor de game: " + games.get());
         }
     }
 
