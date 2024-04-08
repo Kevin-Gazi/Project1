@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Catalogus {
@@ -13,8 +15,17 @@ public class Catalogus {
     }
 
     public void toonCatalogus() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Wil je de catalogus sorteren op basis van best beoordeeld? (ja/nee)");
+        String sorteerOptie = scanner.nextLine();
+
+        if (sorteerOptie.equalsIgnoreCase("ja")) {
+            Collections.sort(games, Comparator.comparingDouble(this::berekenGemiddeldeScore).reversed());
+        }
+
         System.out.println();
         System.out.println("Games in de catalogus:");
+
         for (Game game : games) {
             double gemiddeldeScore = berekenGemiddeldeScore(game);
             double oudePrijs = game.getGamePrijs();
@@ -52,6 +63,12 @@ public class Catalogus {
 
         Game game5 = new Game("Space Invaders", "Shooter", 9.99);
         voegGameToe(game5);
+
+        game1.voegReviewToe(new Review(1,3,2, "Storyline is goed maar gameplay is slecht."));
+        game2.voegReviewToe(new Review(5,5,3, "Ik vind dat het spel heel fijn speelt maar de story is wat kort."));
+        game3.voegReviewToe(new Review(4,3,5, "Heel tevreden over dit spel"));
+        game4.voegReviewToe(new Review(3,2,1, "Spel was heel matig."));
+        game5.voegReviewToe(new Review(5,5,5, "Het leukste spel ooit!"));
     }
 
     public void voegReviewToe() {
