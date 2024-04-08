@@ -16,7 +16,7 @@ public class VragenLijst {
         vragen.add(new Vraag("2a.\tZou je onze website aanbevelen aan andere voor het achterhalen van reviews? (Dit is een Open Vraag)"));
         vragen.add(new MeerkeuzeVragen("3.\tWat motiveerde je om een review achter te laten op de website van Good ol’ games?", new String[]{"Aanbeveling van een vriend", "Eerdere ervaring met het spel", "Nieuwsgierigheid naar de meningen van anderen"}));
         vragen.add(new Vraag("4.\tHeb je ooit moeilijkheden ondervonden bij het vinden van een specifiek spel in de catalogus? (Ja, gelieve te specificeren, nee)"));
-        vragen.add(new MeerkeuzeVragen("5.\tWelke soorten games zou je graag vaker willen zien in de catalogus van Good ol’ games?", new String[]{"Avontuur", "Strategie", "Role-Playing", "Simulatie"}));
+        vragen.add(new MeerkeuzeVragen("5.\tWelke soorten games zou je graag vaker willen zien in de catalogus van Good ol’ games?", new String[]{"Adventure", "Strategy", "Role-Playing", "Simulation","Arcade","Puzzle","Shooter"}));
     }
     public void vragenLijst() {
         Scanner scanner = new Scanner(System.in);
