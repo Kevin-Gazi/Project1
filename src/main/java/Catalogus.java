@@ -219,8 +219,6 @@ public class Catalogus {
                 double nieuwePrijs = oudePrijs * 0.90;
 
                 System.out.printf("Titel: %s, Oude Prijs: %.2f, Nieuwe Prijs: %.2f\n", game.getGameNaam(), oudePrijs, nieuwePrijs);
-            } else {
-                System.out.println("Er zijn geen games in de uitverkoop.");
             }
         }
     }
