@@ -7,6 +7,10 @@ public class MenuKeuze {
         this.catalogus = new Catalogus();
     }
 
+    public void toonGameArt(){
+        System.out.println();
+    }
+
     public void displayMainMenu() {
         System.out.println();
         System.out.println("=== Retro Game Store ===");
@@ -18,6 +22,7 @@ public class MenuKeuze {
         System.out.println("6. Toon uitverkoop");
         System.out.println();
         System.out.println("9. Afsluiten");
+        System.out.println();
     }
 
 
@@ -35,6 +40,7 @@ public class MenuKeuze {
             switch (choice) {
                 case 1:
                     catalogus.toonCatalogus();
+
                     break;
                 case 2:
                     Game.voegGameToe(scanner, catalogus);
