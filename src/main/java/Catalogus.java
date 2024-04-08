@@ -98,7 +98,14 @@ public class Catalogus {
                 System.out.println("Bedankt voor het geven van een review op de game:" +spel.getGameNaam());
                 System.out.println("Heeft u tijd om een vragenlijst in te vullen? (Ja/Nee)");
 
-                String antwoord =sc.nextLine();
+                String antwoord = "";
+                while (!antwoord.equalsIgnoreCase("Ja") && !antwoord.equalsIgnoreCase("Nee")) {
+                    antwoord = sc.nextLine();
+                    if (!antwoord.equalsIgnoreCase("Ja") && !antwoord.equalsIgnoreCase("Nee")) {
+                        System.out.println("Ongeldige invoer. Voer 'Ja' of 'Nee' in.");
+                    }
+                }
+
                 if (antwoord.equalsIgnoreCase("Ja")) {
                     VragenLijst vragenlijst = new VragenLijst();
                     vragenlijst.vragenLijst();

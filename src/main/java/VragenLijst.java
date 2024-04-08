@@ -18,8 +18,6 @@ public class VragenLijst {
         vragen.add(new Vraag("4.\tHeb je ooit moeilijkheden ondervonden bij het vinden van een specifiek spel in de catalogus? (Ja, gelieve te specificeren, nee)"));
         vragen.add(new MeerkeuzeVragen("5.\tWelke soorten games zou je graag vaker willen zien in de catalogus van Good ol’ games?", new String[]{"Avontuur", "Strategie", "Role-Playing", "Simulatie"}));
     }
-
-
     public void vragenLijst() {
         Scanner scanner = new Scanner(System.in);
 
@@ -60,12 +58,12 @@ public class VragenLijst {
     }
 
     public void schrijfNaarCsv(String csvBestand) {
-        try (CSVWriter writer = new CSVWriter(new FileWriter(csvBestand))) {
+        try (CSVWriter writer = new CSVWriter(new FileWriter(csvBestand, true))) { // true parameter om toe te staan dat nieuwe gegevens worden toegevoegd
             for (Vraag vraag : vragen) {
                 writer.writeNext(new String[]{vraag.getVraag(), vraag.getAntwoord()});
                 writer.writeNext(new String[]{""});
             }
-            System.out.println("De vragenlijst is opgeslagen in " + csvBestand);
+            System.out.println("De vragenlijst is opgeslagen.");
         } catch (IOException e) {
             e.printStackTrace();
         }
