@@ -13,6 +13,7 @@ public class Catalogus {
     }
 
     public void toonCatalogus() {
+        System.out.println();
         System.out.println("Games in de catalogus:");
         for (Game game : games) {
             double gemiddeldeScore = berekenGemiddeldeScore(game);

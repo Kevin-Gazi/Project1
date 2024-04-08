@@ -8,7 +8,14 @@ public class MenuKeuze {
     }
 
     public void toonGameArt(){
-        System.out.println();
+        System.out.println("      ██          ██      ");
+        System.out.println("        ██      ██        ");
+        System.out.println("      ██████████████      ");
+        System.out.println("    ████  ██████  ████    ");
+        System.out.println("  ██████████████████████  ");
+        System.out.println("  ██  ██████████████  ██  ");
+        System.out.println("  ██  ██          ██  ██  ");
+        System.out.println("        ████  ████        ");
     }
 
     public void displayMainMenu() {
@@ -29,6 +36,7 @@ public class MenuKeuze {
     public void start() {
         int choice;
         Scanner scanner = new Scanner(System.in);
+        toonGameArt();
         catalogus.maakRetroGames();
 
         do {
