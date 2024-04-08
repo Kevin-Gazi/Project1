@@ -42,7 +42,7 @@ public class Catalogus {
                 prijsNaKorting = String.format("%.2f", game.getGamePrijs());
             }
 
-            System.out.printf("Titel: %s, Genre: %s, Prijs: %.2f, Prijs na Korting: %s, Gemiddelde score: %.1f\n",
+            System.out.printf("Titel: %s, Genre: %s, Prijs: %.2f, Nieuwe Prijs: %s, Gemiddelde Score: %.1f\n",
                     game.getGameNaam(), game.getGameGenre(), oudePrijs, prijsNaKorting, gemiddeldeScore);
         }
     }
