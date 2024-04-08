@@ -26,7 +26,7 @@ public class VragenLijst {
 
             if (vraag instanceof MeerkeuzeVragen) {
                 MeerkeuzeVragen mkVraag = (MeerkeuzeVragen) vraag;
-                System.out.println("Opties:");
+                System.out.println("Kies uit:");
                 for (int i = 0; i < mkVraag.getOpties().length; i++) {
                     System.out.println((i + 1) + ". " + mkVraag.getOpties()[i]);
                 }
@@ -34,9 +34,10 @@ public class VragenLijst {
                 int keuze = -1;
 
                 while (keuze == -1) {
-                    System.out.print("Antwoord (1-" + mkVraag.getOpties().length + "): ");
+                    System.out.println("Antwoord (1-" + mkVraag.getOpties().length + "): ");
                     keuze = scanner.nextInt();
                     scanner.nextLine();
+                    System.out.println();
 
                     if (keuze < 1 || keuze > mkVraag.getOpties().length) {
                         System.out.println("Het cijfer moet tussen 1 en " + mkVraag.getOpties().length + " liggen. Voer een nieuw cijfer in.");
@@ -58,10 +59,11 @@ public class VragenLijst {
     }
 
     public void schrijfNaarCsv(String csvBestand) {
-        try (CSVWriter writer = new CSVWriter(new FileWriter(csvBestand, true))) { // true parameter om toe te staan dat nieuwe gegevens worden toegevoegd
+        try (CSVWriter writer = new CSVWriter(new FileWriter(csvBestand, true))) {
             for (Vraag vraag : vragen) {
-                writer.writeNext(new String[]{vraag.getVraag(), vraag.getAntwoord()});
-                writer.writeNext(new String[]{""});
+                writer.writeNext(new String[]{vraag.getVraag()});
+                writer.writeNext(new String[]{vraag.getAntwoord()});
+                writer.writeNext(new String[]{});
             }
             System.out.println("De vragenlijst is opgeslagen.");
         } catch (IOException e) {
