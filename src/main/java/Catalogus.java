@@ -20,7 +20,7 @@ public class Catalogus {
             String prijsNaKorting;
 
             if (gemiddeldeScore == 0 || gemiddeldeScore == 3) {
-                prijsNaKorting = "nvt";
+                prijsNaKorting = "N.V.T.";
             } else {
                 if (gemiddeldeScore > 4) {
                     game.setGamePrijs(game.getGamePrijs() * 1.10);
@@ -178,4 +178,18 @@ public class Catalogus {
 
         return totaleScore / (3.0 * aantalReviews);
     }
+
+    public void toonGamesMetKorting() {
+        System.out.println("Games met korting:");
+        for (Game game : games) {
+            double gemiddeldeScore = berekenGemiddeldeScore(game);
+            if (gemiddeldeScore > 0 && gemiddeldeScore <= 2) {
+                double oudePrijs = game.getGamePrijs();
+                double nieuwePrijs = oudePrijs * 0.90;
+
+                System.out.printf("Titel: %s, Oude Prijs: %.2f, Nieuwe Prijs: %.2f\n", game.getGameNaam(), oudePrijs, nieuwePrijs);
+            }
+        }
+    }
+
 }
