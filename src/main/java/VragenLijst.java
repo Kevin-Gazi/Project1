@@ -1,5 +1,4 @@
 import com.opencsv.CSVWriter;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,6 +16,8 @@ public class VragenLijst {
         vragen.add(new MeerkeuzeVragen("3.\tWat motiveerde je om een review achter te laten op de website van Good ol’ games?", new String[]{"Aanbeveling van een vriend", "Eerdere ervaring met het spel", "Nieuwsgierigheid naar de meningen van anderen"}));
         vragen.add(new Vraag("4.\tHeb je ooit moeilijkheden ondervonden bij het vinden van een specifiek spel in de catalogus? (Ja, gelieve te specificeren, nee)"));
         vragen.add(new MeerkeuzeVragen("5.\tWelke soorten games zou je graag vaker willen zien in de catalogus van Good ol’ games?", new String[]{"Adventure", "Strategy", "Role-Playing", "Simulation","Arcade","Puzzle","Shooter"}));
+        vragen.add(new VervolgVraag("6.\tHeeft u suggesties voor verbeteringen of toevoegingen aan ons website van Good ol’ games ? (ja/nee)"));
+
     }
     public void vragenLijst() {
         Scanner scanner = new Scanner(System.in);
@@ -38,7 +39,6 @@ public class VragenLijst {
                     keuze = scanner.nextInt();
                     scanner.nextLine();
                     System.out.println();
-
                     if (keuze < 1 || keuze > mkVraag.getOpties().length) {
                         System.out.println("Het cijfer moet tussen 1 en " + mkVraag.getOpties().length + " liggen. Voer een nieuw cijfer in.");
                         keuze = -1;
@@ -46,6 +46,15 @@ public class VragenLijst {
                 }
 
                 vraag.setAntwoord(mkVraag.getOpties()[keuze - 1]);
+            } else if (vraag instanceof VervolgVraag) {
+                System.out.print("Antwoord (ja/nee): ");
+                String antwoord = scanner.nextLine().toLowerCase();
+                vraag.setAntwoord(antwoord);
+                if (antwoord.equals("ja")) {
+                    VervolgVraag VervolgVraag = (VervolgVraag) vraag;
+                    VervolgVraag.vraagVervolgVraag();
+                }
+                System.out.println();
             } else {
                 System.out.print("Antwoord: ");
                 String antwoord = scanner.nextLine();
@@ -54,10 +63,11 @@ public class VragenLijst {
             }
         }
 
+
+
         schrijfNaarCsv("src/main/resources/VragenLijst.csv");
         System.out.println("Bedankt voor het invullen van de vragenlijst!");
     }
-
     public void schrijfNaarCsv(String csvBestand) {
         try (CSVWriter writer = new CSVWriter(new FileWriter(csvBestand, true))) {
             for (Vraag vraag : vragen) {
