@@ -2,6 +2,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
+import com.opencsv.CSVWriter;
+
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Catalogus {
     public ArrayList<Game> games;
@@ -112,6 +116,8 @@ public class Catalogus {
                 Review review = new Review(cijferGameplay, cijferGraphics, cijferStoryline, toelichting);
                 spel.voegReviewToe(review);
 
+
+                schrijfNaarCsv("src/main/resources/GameReviews.csv");
                 System.out.println("Bedankt voor het geven van een review op de game:" +spel.getGameNaam());
                 System.out.println("Heeft u tijd om een vragenlijst in te vullen? (Ja/Nee)");
 
@@ -218,5 +224,39 @@ public class Catalogus {
             }
         }
     }
+    public void schrijfNaarCsv(String csvBestand) {
+        try {
+            FileWriter fileWriter = new FileWriter(csvBestand);
+            CSVWriter csvWriter = new CSVWriter(fileWriter);
+
+
+            String[] header = {"Game Naam", "Game Genre", "Game Prijs", "Gameplay Score", "Graphics Score", "Story Score", "Toelichting"};
+            csvWriter.writeNext(header);
+
+            
+            for (Game game : games) {
+                String gameNaam = game.getGameNaam();
+                String gameGenre = game.getGameGenre();
+                String gamePrijs = String.valueOf(game.getGamePrijs());
+
+                ArrayList<Review> reviewLijst = game.getReviewLijst();
+                for (Review review : reviewLijst) {
+                    String gameplayScore = String.valueOf(review.getGameplayScore());
+                    String graphicsScore = String.valueOf(review.getGraphicsScore());
+                    String storyScore = String.valueOf(review.getStoryScore());
+                    String toelichting = review.getToelichting();
+
+                    String[] data = {gameNaam, gameGenre, gamePrijs, gameplayScore, graphicsScore, storyScore, toelichting};
+                    csvWriter.writeNext(data);
+                }
+            }
+
+            csvWriter.close();
+            System.out.println("De reviews zijn succesvol geschreven naar " + csvBestand);
+        } catch (IOException e) {
+            System.err.println("Fout bij het schrijven naar het CSV-bestand: " + e.getMessage());
+        }
+    }
+
 
 }
