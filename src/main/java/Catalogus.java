@@ -36,7 +36,7 @@ public class Catalogus {
             String prijsNaKorting;
 
             if (gemiddeldeScore == 0 || gemiddeldeScore == 3) {
-                prijsNaKorting = "N.V.T.";
+                prijsNaKorting = "NVT.";
             } else {
                 if (gemiddeldeScore > 4) {
                     game.setGamePrijs(game.getGamePrijs() * 1.10);
