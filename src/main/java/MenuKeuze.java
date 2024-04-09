@@ -51,7 +51,8 @@ public class MenuKeuze {
 
                     break;
                 case 2:
-                    Game.voegGameToe(scanner, catalogus);
+                    Game nieuweGame = new Game("", "", 0);
+                    nieuweGame.voegGameToe(scanner, catalogus);
                     break;
                 case 3:
                     catalogus.toonGamesOpGenre();
