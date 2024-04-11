@@ -27,7 +27,7 @@ public class Review {
         return storyScore;
     }
 
-    public String getToelichting() {
+    public String getToelichting()   {
         return toelichting;
     }
 }

@@ -169,7 +169,6 @@ public class Catalogus {
                 }
             }
         }
-
         if (!gameGevonden) {
             System.out.println("Deze game staat niet in de catalogus.");
         }

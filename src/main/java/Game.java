@@ -42,9 +42,9 @@ public class Game {
         double prijs;
         while (true) {
             System.out.print("Voer de prijs van de nieuwe game in: ");
-            String input = scanner.nextLine();
+            double input = scanner.nextDouble();
             try {
-                prijs = Double.parseDouble(input);
+                prijs = input;
                 break;
             } catch (NumberFormatException e) {
                 System.out.println("Ongeldige invoer. Voer een geldig getal in voor de prijs.");

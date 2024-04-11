@@ -48,7 +48,6 @@ public class MenuKeuze {
             switch (choice) {
                 case 1:
                     catalogus.toonCatalogus();
-
                     break;
                 case 2:
                     Game nieuweGame = new Game("", "", 0);
